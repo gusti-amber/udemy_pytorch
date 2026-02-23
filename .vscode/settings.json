@@ -1,0 +1,4 @@
+{
+  // ワークスペースで使用するPythonのデフォルトインタプリタを設定
+  "python.defaultInterpreterPath": "/opt/miniconda3/envs/udemy_pytorch/bin/python"
+}
