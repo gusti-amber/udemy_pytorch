@@ -89,7 +89,7 @@ def result():
         # 予測
         net = Net()
         net.load_state_dict(torch.load(
-            "model_cnn.pth", map_location=torch.device("cpu")))
+            "classifier/model_cnn.pth", map_location=torch.device("cpu")))
         net.eval()  # 評価モード
 
         y = net(x)
