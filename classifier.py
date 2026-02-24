@@ -119,14 +119,13 @@ def result():
         y = net(x)
         y = F.softmax(y, dim=1)[0]
         sorted_idx = torch.argsort(-y)  # 降順でソート
-        result = ""
+        results = []
         for i in range(n_result):
             idx = sorted_idx[i].item()
             ratio = y[idx].item()
             label = labels[idx]
-            result += "<p>" + str(round(ratio*100, 1)) + \
-                "%の確率で" + label + "です。</p>"
-        return render_template("result.html", result=Markup(result), filepath=filepath)
+            results.append([label, round(ratio*100, 1)])
+        return render_template("result.html", results=results, filepath=filepath)
     else:
         return redirect(url_for("index"))
 
