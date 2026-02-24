@@ -1,13 +1,24 @@
-{% extends "layout.html" %}
-{% block content %}
-<div class="container">
-  <div class="col content">
-    <h1>判定結果</h1>
-    {{result}}
-    <p><img src="{{filepath}}"></p>
-    <form method="get" action="/">
-      <button class="submit">戻る</button>
-    </form>
+{% extends "layout.html" %} {% block content %}
+<div class="flex justify-center">
+  <div
+    class="flex flex-col items-center justify-center gap-6 p-12 max-w-2xl w-full"
+  >
+    <p class="text-2xl font-bold">判定結果</p>
+
+    <p class="text-xl font-semibold">ずばり、{{results[0][0]}}です！</p>
+
+    <img src="{{filepath}}" />
+    <div class="card card-border bg-base-200 shadow-sg p-4">
+      <div class="card-title">判定結果の詳細</div>
+      <div class="card-body">
+        {% for result in results %}
+        <p class="text-base">{{result[1]}}%の確率で{{result[0]}}です。</p>
+        {% endfor %}
+      </div>
+    </div>
+    <a href="{{ url_for('select') }}" class="btn btn-neutral mt-4"
+      >選択画面へ戻る</a
+    >
   </div>
 </div>
 {% endblock %}
