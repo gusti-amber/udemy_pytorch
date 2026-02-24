@@ -102,7 +102,9 @@ def result():
             label = labels[idx]
             result += "<p>" + str(round(ratio*100, 1)) + \
                 "%の確率で" + label + "です。</p>"
-        return render_template("result.html", result=Markup(result), filepath=filepath)
+        # 画像表示用にURLパスを渡す（Flaskは /static/... で静的ファイルを配信する）
+        image_url = url_for("static", filename=f"images/{filename}")
+        return render_template("result.html", result=Markup(result), filepath=image_url)
     else:
         return redirect(url_for("index"))
 
