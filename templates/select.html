@@ -1,13 +1,217 @@
 {% extends "layout.html" %} {% block content %}
-<div class="container">
-  <div class="col content">
-    <h1>判定結果</h1>
-    {{result}}
-    <p><img src="{{filepath}}" /></p>
-    <form method="post" , enctype="multipart/form-data" , action="/result">
-      <input name="file" type="file" />
-      <input class="btn btn-accent" type="submit" , value="判定" />
+<div class="flex justify-center">
+  <div
+    class="flex flex-col items-center justify-center gap-6 p-12 max-w-3xl w-full"
+  >
+    <p class="text-2xl font-bold">判定する画像を選択ください</p>
+
+    <form id="sample-form" method="post" action="{{ url_for('result') }}">
+      <fieldset class="form-control w-full max-w-3xl">
+        <div class="grid grid-cols-5 gap-4">
+          <div class="flex flex-col items-center">
+            <input
+              id="sample-airplane"
+              type="radio"
+              name="sample"
+              value="飛行機"
+              class="sample-radio hidden"
+              required
+            />
+            <label for="sample-airplane" class="cursor-pointer">
+              <img
+                src="{{ url_for('static', filename='images/airplane.jpg') }}"
+                alt="飛行機"
+                class="w-28 h-28 object-cover rounded-lg"
+              />
+            </label>
+            <span class="mt-1 text-sm">飛行機</span>
+          </div>
+
+          <div class="flex flex-col items-center">
+            <input
+              id="sample-automobile"
+              type="radio"
+              name="sample"
+              value="自動車"
+              class="sample-radio hidden"
+            />
+            <label for="sample-automobile" class="cursor-pointer">
+              <img
+                src="{{ url_for('static', filename='images/automobile.jpg') }}"
+                alt="自動車"
+                class="w-28 h-28 object-cover rounded-lg"
+              />
+            </label>
+            <span class="mt-1 text-sm">自動車</span>
+          </div>
+
+          <div class="flex flex-col items-center">
+            <input
+              id="sample-bird"
+              type="radio"
+              name="sample"
+              value="鳥"
+              class="sample-radio hidden"
+            />
+            <label for="sample-bird" class="cursor-pointer">
+              <img
+                src="{{ url_for('static', filename='images/bird.jpg') }}"
+                alt="鳥"
+                class="w-28 h-28 object-cover rounded-lg"
+              />
+            </label>
+            <span class="mt-1 text-sm">鳥</span>
+          </div>
+
+          <div class="flex flex-col items-center">
+            <input
+              id="sample-cat"
+              type="radio"
+              name="sample"
+              value="猫"
+              class="sample-radio hidden"
+            />
+            <label for="sample-cat" class="cursor-pointer">
+              <img
+                src="{{ url_for('static', filename='images/cat.jpg') }}"
+                alt="猫"
+                class="w-28 h-28 object-cover rounded-lg"
+              />
+            </label>
+            <span class="mt-1 text-sm">猫</span>
+          </div>
+
+          <div class="flex flex-col items-center">
+            <input
+              id="sample-deer"
+              type="radio"
+              name="sample"
+              value="鹿"
+              class="sample-radio hidden"
+            />
+            <label for="sample-deer" class="cursor-pointer">
+              <img
+                src="{{ url_for('static', filename='images/deer.jpg') }}"
+                alt="鹿"
+                class="w-28 h-28 object-cover rounded-lg"
+              />
+            </label>
+            <span class="mt-1 text-sm">鹿</span>
+          </div>
+
+          <div class="flex flex-col items-center">
+            <input
+              id="sample-dog"
+              type="radio"
+              name="sample"
+              value="犬"
+              class="sample-radio hidden"
+            />
+            <label for="sample-dog" class="cursor-pointer">
+              <img
+                src="{{ url_for('static', filename='images/dog.jpg') }}"
+                alt="犬"
+                class="w-28 h-28 object-cover rounded-lg"
+              />
+            </label>
+            <span class="mt-1 text-sm">犬</span>
+          </div>
+
+          <div class="flex flex-col items-center">
+            <input
+              id="sample-frog"
+              type="radio"
+              name="sample"
+              value="カエル"
+              class="sample-radio hidden"
+            />
+            <label for="sample-frog" class="cursor-pointer">
+              <img
+                src="{{ url_for('static', filename='images/frog.jpg') }}"
+                alt="カエル"
+                class="w-28 h-28 object-cover rounded-lg"
+              />
+            </label>
+            <span class="mt-1 text-sm">カエル</span>
+          </div>
+
+          <div class="flex flex-col items-center">
+            <input
+              id="sample-horse"
+              type="radio"
+              name="sample"
+              value="馬"
+              class="sample-radio hidden"
+            />
+            <label for="sample-horse" class="cursor-pointer">
+              <img
+                src="{{ url_for('static', filename='images/horse.jpg') }}"
+                alt="馬"
+                class="w-28 h-28 object-cover rounded-lg"
+              />
+            </label>
+            <span class="mt-1 text-sm">馬</span>
+          </div>
+
+          <div class="flex flex-col items-center">
+            <input
+              id="sample-ship"
+              type="radio"
+              name="sample"
+              value="船"
+              class="sample-radio hidden"
+            />
+            <label for="sample-ship" class="cursor-pointer">
+              <img
+                src="{{ url_for('static', filename='images/ship.jpg') }}"
+                alt="船"
+                class="w-28 h-28 object-cover rounded-lg"
+              />
+            </label>
+            <span class="mt-1 text-sm">船</span>
+          </div>
+
+          <div class="flex flex-col items-center">
+            <input
+              id="sample-truck"
+              type="radio"
+              name="sample"
+              value="トラック"
+              class="sample-radio hidden"
+            />
+            <label for="sample-truck" class="cursor-pointer">
+              <img
+                src="{{ url_for('static', filename='images/truck.jpg') }}"
+                alt="トラック"
+                class="w-28 h-28 object-cover rounded-lg"
+              />
+            </label>
+            <span class="mt-1 text-sm">トラック</span>
+          </div>
+        </div>
+      </fieldset>
     </form>
+
+    <button class="btn btn-success mt-4" type="submit" form="sample-form">
+      判定
+    </button>
+
+    <a href="{{ url_for('index') }}" class="btn btn-neutral mt-4">
+      トップページへ戻る
+    </a>
   </div>
 </div>
+
+<style>
+  .sample-radio + label img {
+    border: 4px solid transparent;
+    border-radius: 0.75rem;
+    transition: border-color 0.15s ease;
+  }
+
+  .sample-radio:checked + label img {
+    border-color: #00d390;
+  }
+</style>
+
 {% endblock %}

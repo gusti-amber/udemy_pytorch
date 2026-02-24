@@ -1,18 +1,18 @@
 {% extends "layout.html" %} {% block content %}
 <div class="flex justify-center">
   <div
-    class="flex flex-col items-center justify-center gap-6 p-12 max-w-2xl w-full"
+    class="flex flex-col items-center justify-center gap-6 p-12 max-w-3xl w-full"
   >
     <p class="text-4xl font-bold">CIFAR-10 画像判定AI</p>
-    <p class="text-lg">画像判定AIがどんな画像か当ててくれるアプリ</p>
+    <p class="text-xl">画像判定AIがどんな画像か当ててくれるアプリ</p>
 
     <div class="card card-border bg-base-200 shadow-sg p-4">
       <div class="card-title">アプリの説明</div>
       <div class="card-body">
-        <p>
-          画像を選択すると、画像判定AIがどんな画像か当ててくれるアプリです。<br />
+        <p class="text-base">
+          画像を選択すると画像判定AIがどんな画像か当ててくれるアプリです。<br />
           CIFAR-10という60,000枚の画像を使って学習したモデルを使用しています。<br />
-          本アプリでは、選択した画像から以下の乗り物・動物のうち、最も似ているものを判定します。<br />
+          本アプリでは、以下の10種類の乗り物・動物から最も似ているものを判定します。<br />
         </p>
         <div class="carousel rounded-box">
           <div class="carousel-item">
