@@ -1,4 +1,4 @@
-# 画像判定AIアプリ
+# CIFAR-10 CNN Image Classifier - 画像判定AIアプリ
 ### サービスURL: https://image-classifier-1osr.onrender.com
 
 PyTorchを用いて開発した画像判定AIアプリです。
